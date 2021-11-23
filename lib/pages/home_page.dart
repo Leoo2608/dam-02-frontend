@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new WillPopScope(
+    return  WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
           appBar: AppBar(

@@ -24,6 +24,7 @@ class AuthService {
       if (jsonReponse != null) {
         sharedPreferences.setString('token', jsonReponse['accessToken']);
         sharedPreferences.setString('user', json.encode(data['usuario']));
+        print(json.encode(data['usuario']));
       }
       return true;
     } else {
@@ -33,6 +34,8 @@ class AuthService {
 
   static logout() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    _token = 'empty';
+    userModel.username = 'empty';
     await sharedPreferences.clear();
   }
 

@@ -14,6 +14,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
   TextEditingController _controller = TextEditingController();
   Future<Null> getSharedPrefs() async {
     User user = await AuthService.currentUser();
+    print(user.username);
     _username = user.username;
     setState(() {
       textHolder = _username;
@@ -25,6 +26,7 @@ class _SidebarWidgetState extends State<SidebarWidget> {
     super.initState();
     _username = "";
     getSharedPrefs();
+    print(textHolder);
   }
 
   @override

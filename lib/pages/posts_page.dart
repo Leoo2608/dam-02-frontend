@@ -74,7 +74,7 @@ class _PostsPageState extends State<PostsPage> {
               const Divider(height: 1, color: Colors.grey),
           itemBuilder: (_, index) {
             return Dismissible(
-              key: ValueKey(_apiResponse.data[index].idpost),
+              key: UniqueKey(),
               direction: DismissDirection.startToEnd,
               onDismissed: (direction) {},
               confirmDismiss: (direction) async {

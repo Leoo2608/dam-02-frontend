@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:frontend_flutter/models/login_request.dart';
+import 'package:frontend_flutter/models/user.dart';
 import 'package:frontend_flutter/services/auth_service.dart';
 import 'package:frontend_flutter/widgets/sidebar_widget.dart';
 
@@ -16,6 +17,16 @@ class _LoginPageState extends State<LoginPage> {
   bool _passwordVisible = false;
   bool _isLoading = false;
 
+  Future<Null> getSharedPrefs() async {
+    User user = await AuthService.currentUser();
+    print(user.username);
+  }
+   @override
+  void initState() {
+    super.initState();
+    getSharedPrefs();
+  }
+
   Future<bool> _onWillPop() async {
     return (await showDialog(
       context: context,
@@ -24,6 +35,7 @@ class _LoginPageState extends State<LoginPage> {
         content: new Text('¿Deseas salir?'),
         actions: <Widget>[
           TextButton(
+          
             onPressed: () => Navigator.of(context).pop(false),
             child: new Text('No'),
           ),
